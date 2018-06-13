@@ -4,30 +4,43 @@
 		<title>tiitel</title>
 		<style type="text/css" >
 			body {
-				min-width: 500px;
-				max-width: 100%;
-				background-image:  url("library.jpg");
-				color: FECBCC;
+				width: 640px;
+				height: 360px;
+				background-image:  url("library4.jpg");
+				background-color: whitesmoke;
+				background-size:cover;
+				color: #8daab4;
+				overflow:hidden;				
+				font-family: Arial, Helvetica, sans-serif; 
 			}
-			.titles {
-			
+			.page_loader {
+				position: fixed;  
+				background: url('loader.gif') 50% 50% no-repeat rgb(249,249,249);
+				left: 0px;
+				top: 0px;
+				width: 100%;
+				height: 100%;
+				z-index: 9999;
 			}
-		</style >
 
-		
+		</style>
+
 	</head>
 	
 	<body>
 	
-	
-		
-		
-		
 		<div id="container" style="display: none;"></div>
 		<div id="titles"></div>
 		
-		<script type="text/javascript" src="background.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	
 		
+		<script type="text/javascript" src="background.js">
+		$(window).load(function() {
+			$(".page_loader").fadeOut(1000);
+		});
+	</script>
+
 	</body>
 	
 </html>

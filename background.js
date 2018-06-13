@@ -1,10 +1,16 @@
-function createCORSRequest(method = "get", url = "http://www.novelupdates.com/rss.php?uid=17670&unq=56ea8c3a00624&type=read"){
+var feed  = localStorage.getItem('Feed');
+
+if (feed == ""){
+	document.getElementById('titles').innerHTML += "<a href='"+"About:addons"+"' target='"+"_blank"+"' style=color:#f9c052>"+"<b>"+"Please go to about:addons and set your Novelupdates Feed"+"</b>"+"</a>"+
+	"";
+} else {
+/* "http://www.novelupdates.com/rss.php?uid=17670&unq=56ea8c3a00624&type=read*/
+function createCORSRequest(method = "get", url =feed){
     var xhr = new XMLHttpRequest();
     if ("withCredentials" in xhr){
         // XHR has 'withCredentials' property only if it supports CORS
 
         xhr.open(method, url, true);
-				//console.log(xhr);
 
     } else if (typeof XDomainRequest != "undefined"){ // if IE use XDR
         xhr = new XDomainRequest();
@@ -27,7 +33,7 @@ var print = function(item) {
 
 }
 
-var request = createCORSRequest("get", "http://www.novelupdates.com/rss.php?uid=17670&unq=56ea8c3a00624&type=read"  );
+var request = createCORSRequest("get", feed  );
 if ( request ){
 // Define a callback function
 	request.onload = function(){
@@ -42,13 +48,15 @@ if ( request ){
 		var titles = x.getElementsByTagName('title');
 		var pubDate = x.getElementsByTagName('pubDate');*/
 
+		//original color E8C37C
+
 		for (var i=0; i<8; i++){
 
 			var link = update.rss.channel.item[i].link["#text"];
 			var pubDate = update.rss.channel.item[i].pubDate["#text"].slice(-0,-5);
 			var title = update.rss.channel.item[i].title["#text"];
 		
-			document.getElementById('titles').innerHTML += "<a href='"+link+"' target='"+"_blank"+"' style=color:#E8C37C>"+"<b>"+title+"</b>"+"</a>"+
+			document.getElementById('titles').innerHTML += "<a href='"+link+"' target='"+"_blank"+"' style=color:#f9c052>"+"<b>"+title+"</b>"+"</a>"+
 															""+"<br>"+
 															pubDate+"<br>";
 			
@@ -105,5 +113,7 @@ function xmlToJson(xml) {
 			}
 		}
 	}
+
 	return obj;
+};
 };
