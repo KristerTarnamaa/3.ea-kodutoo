@@ -1,8 +1,14 @@
 var feed  = localStorage.getItem('Feed');
+var elem = document.getElementById("myDiv");
 
 if (feed == ""){
-	document.getElementById('titles').innerHTML += "<a href='"+"About:addons"+"' target='"+"_blank"+"' style=color:#f9c052>"+"<b>"+"Please go to about:addons and set your Novelupdates Feed"+"</b>"+"</a>"+
+	document.getElementById('titles').innerHTML += "<a href='"+"About:addons"+"' target='"+"_blank"+"' style=color:#f9c052>"+"<b>"+"Please go to about:addons and set your Novelupdates Feed, Feed is empty string"+"</b>"+"</a>"+
 	"";
+	elem.remove();
+} else if (feed == null) {
+document.getElementById('titles').innerHTML += "<a href='"+"About:addons"+"' target='"+"_blank"+"' style=color:#f9c052>"+"<b>"+"Please go to about:addons and set your Novelupdates Feed, Feed is null"+"</b>"+"</a>"+
+"";
+elem.remove();
 } else {
 /* "http://www.novelupdates.com/rss.php?uid=17670&unq=56ea8c3a00624&type=read*/
 function createCORSRequest(method = "get", url =feed){
@@ -61,7 +67,8 @@ if ( request ){
 															pubDate+"<br>";
 			
 		}
-	};
+		
+		};
 request.send();
 
 }
@@ -114,6 +121,9 @@ function xmlToJson(xml) {
 		}
 	}
 
+
+	elem.remove();
 	return obj;
 };
+
 };
