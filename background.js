@@ -10,22 +10,6 @@ document.getElementById('titles').innerHTML += "<a href='"+"About:addons"+"' tar
 "";
 elem.remove();
 } else {
-/* "http://www.novelupdates.com/rss.php?uid=17670&unq=56ea8c3a00624&type=read*/
-function createCORSRequest(method = "get", url){
-    var xhr = new XMLHttpRequest();
-    if ("withCredentials" in xhr){
-        // XHR has 'withCredentials' property only if it supports CORS
-
-        xhr.open(method, url, true);
-
-    } else if (typeof XDomainRequest != "undefined"){ // if IE use XDR
-        xhr = new XDomainRequest();
-        xhr.open(method, url);
-    } else {
-        xhr = null;
-    }
-    return xhr;
-}
 
 var raw = document.createElement('div');
 var container = document.getElementById('container');
@@ -73,6 +57,22 @@ request.send();
 
 }
 
+function createCORSRequest(method = "get", url){
+    var xhr = new XMLHttpRequest();
+    if ("withCredentials" in xhr){
+        // XHR has 'withCredentials' property only if it supports CORS
+
+        xhr.open(method, url, true);
+
+    } else if (typeof XDomainRequest != "undefined"){ // if IE use XDR
+        xhr = new XDomainRequest();
+        xhr.open(method, url);
+    } else {
+        xhr = null;
+    }
+    return xhr;
+}
+	
 function StringToXML(oString) {
  //code for IE
  if (window.ActiveXObject) { 
