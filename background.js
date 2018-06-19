@@ -11,7 +11,7 @@ document.getElementById('titles').innerHTML += "<a href='"+"About:addons"+"' tar
 elem.remove();
 } else {
 /* "http://www.novelupdates.com/rss.php?uid=17670&unq=56ea8c3a00624&type=read*/
-function createCORSRequest(method = "get", url =feed){
+function createCORSRequest(method = "get", url){
     var xhr = new XMLHttpRequest();
     if ("withCredentials" in xhr){
         // XHR has 'withCredentials' property only if it supports CORS
